@@ -31,6 +31,17 @@ export class HeroesComponent implements OnInit {
   gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedHero.id]);
   }
+  // add function button
+  add(name: string): void {
+    name = name.trim();
+    console.log(name);
+    if (!name) { return; }
+    this.heroService.create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
+  }
   // delay or slowly mode
   // getHeroesSlowly(): void {
   //   this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);

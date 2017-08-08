@@ -31,6 +31,20 @@ var HeroesComponent = (function () {
     HeroesComponent.prototype.gotoDetail = function () {
         this.router.navigate(['/detail', this.selectedHero.id]);
     };
+    // add function button
+    HeroesComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        console.log(name);
+        if (!name) {
+            return;
+        }
+        this.heroService.create(name)
+            .then(function (hero) {
+            _this.heroes.push(hero);
+            _this.selectedHero = null;
+        });
+    };
     return HeroesComponent;
 }());
 HeroesComponent = __decorate([
