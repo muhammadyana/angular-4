@@ -59,6 +59,15 @@ var HeroService = (function () {
             .then(function (res) { return res.json().data; })
             .catch(this.handleError);
     };
+    // delete data
+    HeroService.prototype.delete = function (id) {
+        var url = this.heroesUrl + "/" + id;
+        console.log(url);
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; })
+            .catch(this.handleError);
+    };
     return HeroService;
 }());
 HeroService = __decorate([
@@ -66,4 +75,5 @@ HeroService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], HeroService);
 exports.HeroService = HeroService;
+console.log("hoho");
 //# sourceMappingURL=hero.service.js.map

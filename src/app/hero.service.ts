@@ -55,4 +55,14 @@ export class HeroService {
 	    .then(res => res.json().data as Hero)
 	    .catch(this.handleError);
 	}
+	// delete data
+	delete(id: number): Promise<void> {
+	  const url = `${this.heroesUrl}/${id}`;
+	  console.log(url);
+	  return this.http.delete(url, {headers: this.headers})
+	    .toPromise()
+	    .then(() => null)
+	    .catch(this.handleError);
+	}
 }
+console.log("hoho")
