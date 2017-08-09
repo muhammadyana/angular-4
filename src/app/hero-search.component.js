@@ -25,7 +25,6 @@ var HeroSearchComponent = (function () {
         this.heroSearchService = heroSearchService;
         this.router = router;
         this.searchTerms = new Subject_1.Subject();
-        this.searchTerms = new Subject_1.Subject();
     }
     // Push a search term into the observable stream.
     HeroSearchComponent.prototype.search = function (term) {
@@ -48,10 +47,6 @@ var HeroSearchComponent = (function () {
     HeroSearchComponent.prototype.gotoDetail = function (hero) {
         var link = ['/detail', hero.id];
         this.router.navigate(link);
-    };
-    // Push a search term into the observable stream.
-    HeroSearchComponent.prototype.search = function (term) {
-        this.searchTerms.next(term);
     };
     return HeroSearchComponent;
 }());

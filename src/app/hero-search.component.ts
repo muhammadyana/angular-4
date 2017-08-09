@@ -54,10 +54,4 @@ export class HeroSearchComponent implements OnInit {
     let link = ['/detail', hero.id];
     this.router.navigate(link);
   }
-  private searchTerms = new Subject<string>();
-
-  // Push a search term into the observable stream.
-  search(term: string): void {
-    this.searchTerms.next(term);
-  }
 }
