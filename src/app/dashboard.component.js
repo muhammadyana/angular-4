@@ -15,7 +15,26 @@ var DashboardComponent = (function () {
     function DashboardComponent(heroService) {
         this.heroService = heroService;
         this.heroes = [];
+        this.clickMessage = '';
+        this.values = '';
+        // onKey(event: KeyboardEvent) { // with type info
+        //   this.values += (<HTMLInputElement>event.target).value + ' | ';
+        // }
+        this.value = '';
+        this.books = ['Angular', 'Node', 'Vue', 'React'];
     }
+    DashboardComponent.prototype.onClickMe = function () {
+        this.clickMessage = 'You are my hero!';
+    };
+    DashboardComponent.prototype.onKey = function (event) {
+        this.values += event.target.value + '-';
+    };
+    DashboardComponent.prototype.onEnter = function (value) { this.value = value; };
+    DashboardComponent.prototype.addHero = function (newBook) {
+        if (newBook) {
+            this.books.push(newBook);
+        }
+    };
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.heroService.getHeroes()
@@ -32,4 +51,5 @@ DashboardComponent = __decorate([
     __metadata("design:paramtypes", [hero_service_1.HeroService])
 ], DashboardComponent);
 exports.DashboardComponent = DashboardComponent;
+console.log("hallo ✋🏻");
 //# sourceMappingURL=dashboard.component.js.map

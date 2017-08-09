@@ -10,6 +10,28 @@ import { HeroService } from './hero.service';
 })
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
+  clickMessage = '';
+
+  onClickMe() {
+    this.clickMessage = 'You are my hero!';
+  }
+  values = '';
+
+  onKey(event: any) { // without type info
+    this.values += event.target.value + '-';
+  }
+  // onKey(event: KeyboardEvent) { // with type info
+  //   this.values += (<HTMLInputElement>event.target).value + ' | ';
+  // }
+  value = '';
+  onEnter(value: string) { this.value = value; }
+
+  books = ['Angular', 'Node', 'Vue', 'React'];
+  addHero(newBook: string) {
+    if (newBook) {
+      this.books.push(newBook);
+    }
+  }
 
   constructor(private heroService: HeroService) { }
 
@@ -17,4 +39,7 @@ export class DashboardComponent implements OnInit {
     this.heroService.getHeroes()
       .then(heroes => this.heroes = heroes.slice(1, 5));
   }
+
+  
 }
+console.log("hallo ✋🏻")
